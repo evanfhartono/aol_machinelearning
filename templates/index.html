@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Views Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #28a745;
+        }
+        .error {
+            text-align: center;
+            color: #dc3545;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>YouTube Views Predictor</h1>
+        <form method="POST" action="/predict">
+            <label for="title">Video Title:</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="tags">Tags:</label>
+            <input type="text" id="tags" name="tags" placeholder="tag1|tag2|tag3" required>
+
+            <label for="description">Video Description:</label>
+            <textarea id="description" name="description" required></textarea>
+
+            <label for="published_date">Published Date:</label>
+            <input type="date" id="published_date" name="published_date" required>
+
+            <label for="categoryId">Category:</label>
+            <select id="categoryId" name="categoryId" required>
+                {% for id, name in categories %}
+                <option value="{{ id }}">{{ name }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="channelTitle">Channel:</label>
+            <select id="channelTitle" name="channelTitle" required>
+                {% for title in channels %}
+                <option value="{{ title }}">{{ title }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="comments_disabled">Comments Disabled:</label>
+            <input type="checkbox" id="comments_disabled" name="comments_disabled">
+
+            <label for="ratings_disabled">Ratings Disabled:</label>
+            <input type="checkbox" id="ratings_disabled" name="ratings_disabled">
+
+            <button type="submit">Predict Views</button>
+        </form>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        {% if prediction %}
+            <div class="result">Predicted Views: {{ prediction }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
