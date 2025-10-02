@@ -128,11 +128,37 @@ youtube_views_prediction/
 
 ---
 
-## 📚 References
-This project references works in **YouTube video analytics, view prediction, and ML methods**.  
-Key sources include Kaggle datasets and related ML research
+## 🏃 How to Run the Project
 
+Follow these steps to set up and run the project locally:
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/evanfhartono/aol_machinelearning.git
+cd aol_machinelearning
+```
+### 2. Create and activate a virtual environment & Install dependencies
+```
+python -m venv venv
+venv\Scripts\activate
+
+pip install pandas numpy scikit-learn xgboost gensim flask joblib
+```
+### 3. Run the Flask app
+```
+python app/app.py
+```
+### 4. Open in browser
+http://127.0.0.1:5000
 ---
+## UI Preview
+<img width="361" height="591" alt="chrome_NktA0RmuAl" src="https://github.com/user-attachments/assets/5b45f087-a73e-4f15-8a69-d8eb3d6a9c9f" />
+<img width="363" height="588" alt="chrome_bTurJd5fG8" src="https://github.com/user-attachments/assets/eca8ba32-7b40-4dbf-be7c-5ec8b3357d0e" />
+
+## Loaa and actual vs prediction comparison table
+<img width="572" height="341" alt="chrome_qy7JluS0Pk" src="https://github.com/user-attachments/assets/f9e2a33a-e742-4ae3-aaac-d0821e7a081e" />
+<img width="442" height="348" alt="chrome_iLbQrnBki8" src="https://github.com/user-attachments/assets/3350ad56-07de-4cc1-a2fc-47ca22e1b5c5" />
+
 
 ## 🙋 About
 This repository is part of my **Machine Learning portfolio**.  
